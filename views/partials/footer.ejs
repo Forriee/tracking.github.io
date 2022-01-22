@@ -1,0 +1,56 @@
+    <!-- ! Footer -->
+    <footer class="footer">
+     <div class="container footer--flex">
+       <div class="footer-start">
+         <p>2021 -  Equipment Life Expectancy Tracking System <a href="elegant-dashboard.com" target="_blank"
+             rel="noopener noreferrer"> [2020] </a></p>
+       </div>
+       <ul class="footer-end">
+
+    
+
+
+        <button type="button" class="btn" style="background-color: transparent;" data-toggle="modal" data-target="#staticBackdropsss">
+          About
+        </button>
+
+        <div class="modal fade" id="staticBackdropsss" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                <center><img src="/img/logo.png" alt="Logo" style="width: 50%;"></center>
+              </div>
+              <div class="modal-body">
+                  <center><h5>The “ELETS” is a web application design for equipment utilization and conflict detection. 
+                    The admin can set an equipment that inludes its name, brand, condition, user, date of use 
+                    and life expectancy. The admin can change the equipment to maintenance or waste, and 
+                    also can email the user of the equipment for the maintenance purposes. 
+                    This application was developed by BSIT students for 
+                    their capstone project.</h5></center>
+              </div>
+              <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+          </div>
+          </div>
+      </div>
+
+       </ul>
+     </div>
+   </footer>
+ </div>
+
+
+ <script src="/plugins/feather.min.js"></script>
+ <script src="/js/script.js"></script>
+ <script>
+
+   var  months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+   var d = new Date();
+   var monthName=months[d.getMonth()]+'-'+d.getDate()+'-'+d.getFullYear()+'-'+d.toLocaleTimeString();
+
+   document.getElementById("p1").innerHTML = monthName;
+
+   </script>
+ </body>
+</html>

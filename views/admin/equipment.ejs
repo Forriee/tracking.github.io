@@ -1,0 +1,142 @@
+<%- include('../partials/admin/header') %>
+
+    <!-- Main Body (content)-->
+
+    <main style="margin-top: 0px;" class="main users chart-page" id="skip-target">
+      <div class="container">
+        <div class="row stat-cards" style="margin-top: -25px;">
+          <div class="col-md-4 col-xl-4">
+              <div class="stat-cards-item">
+                    <div class="stat-cards-icon ">
+                      <i data-feather="file" aria-hidden="true"></i>
+                    </div>
+                    <div class="stat-cards-info">
+                      <h3 class="stat-cards-info__num"><%=row.length%></h3>
+                      <h5 class="stat-cards-info__title">Number of Equipments in Inventory</a></h5>
+                    </div>
+              </div>
+          </div>
+
+          <div class="col-md-4 col-xl-4">
+                  <div class="stat-cards-item">
+                    <div class="stat-cards-icon ">
+                      <i data-feather="bar-chart-2" aria-hidden="true"></i>
+                    </div>
+                    <div class="stat-cards-info">
+                      <h3 class="stat-cards-info__num"><%=row2.length%></h3>
+                      <h5 class="stat-cards-info__title">Number of Equipments in Maintenance</h5> 
+                    </div>
+                  </div>
+          </div>
+
+          <div class="col-md-4 col-xl-4">
+            <div class="stat-cards-item">
+              <div class="stat-cards-icon ">
+                <i data-feather="bar-chart-2" aria-hidden="true"></i>
+              </div>
+              <div class="stat-cards-info">
+                <h3 class="stat-cards-info__num"><%=row3.length%></h3>
+                <h5 class="stat-cards-info__title">Number of Equipments in E-Waste</h5> 
+              </div>
+            </div>
+    </div>
+      </div>
+      <br>
+      <% if(error && error.length > 0){ %>
+        <div class="alert alert-danger" role="alert">
+            <%= error %>
+        </div>
+    <% } %>
+    <% if(success && success.length > 0){ %>
+      <center>
+        <div class="alert alert-success" role="alert">
+            <%= success %>
+        </div>
+      </center>
+    <% } %>
+    <% if(info && info.length > 0){ %>
+        <div class="alert alert-info" role="alert">
+            <%= info %>
+        </div>
+    <% } %>
+        <br>
+
+        <div>
+          <h3 style="color: #1e140a;"><b>Equipments Inventory</b></h3>
+          <br>
+          <p id="p1"></p>
+          <br>
+          <form action="/admin/search" method="get">
+            <div class="horizontal-group">
+              <div class="form-group left">
+                <input type="text" placeholder="Search" style="border: 1px solid black;" name="term" class="form-input" >
+                <button type="submit" class="btn btn-primary" style="background-color:#0a2825; border-color: transparent;">Search <i class="fa fa-search" aria-hidden="true"></i></button>
+              </div>
+            </div>
+          </form>
+
+
+      
+
+          <br>
+          <br>
+
+        
+
+          <!-- Table -->
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                    <th class="hidden-xs">#</th>
+                    <th><center>Name</center></th>
+                    <th><center>Brand</center></th>
+                    <th><center>Condition</center></th>
+                    <th><center>User</center></th>
+                    <th><center>Date of Use</center></th>
+                    <th><center>Life Expectancy</center></th>
+                    <th><center>Actions</center></th>
+                </tr> 
+              </thead>
+              <tbody id="databody">
+                                        
+              </tbody>
+
+              <tbody>
+
+                      <% row.forEach((appointment, i) => { %>
+                        <tr>
+                          <td class="hidden-xs"><%=i+1%></td>
+                          <td><center> <%=appointment.NAME%> </center></td>
+                          <td><center> <%=appointment.BRAND%> </center></td>
+                          <td><center> <%=appointment.COND%> </center></td>
+                          <td><center> <%=appointment.LOCATION%> </center></td>
+                          <td><center> <%=appointment.PRICE%> </center></td>
+                          <td id="life"><center> <%=appointment.LIFESPAN %></center>
+                            <td align="center">
+
+                             <% id=appointment.ITEM_ID %>
+                             
+
+                                 <a href="maintenance/<%=appointment.ITEM_ID%>" class="btn btn-primary" style="background-color: #0a2825; border-color: transparent;">Put in Maintenance <em class="fa fa-spinner"></em></a>
+                                 <a href="equipment/assigntime/<%=id%>" class="btn btn-secondary" style="background-color:#166c44; border-color: transparent;" >Edit <em class="fa fa-pencil"></em></a>
+                                 <a href="equipment/email/<%=id%>" class="btn btn-secondary" style="background-color:rgb(2, 2, 32); border-color: transparent;" >Email <i class="fa fa-envelope" aria-hidden="true"></i></a>
+
+                           </td>
+                          </td>
+                        </tr>
+                      <% }) %>
+
+              </tbody>
+            </table>
+        
+        </div>
+      </div>
+    </main>
+
+    
+    <script>
+
+
+    </script>
+
+<%- include('../partials/footer') %>
